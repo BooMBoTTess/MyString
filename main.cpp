@@ -1,4 +1,5 @@
 #include "MyString.h"
+//github test
 
 int main() {
 	const char* fck = "dsafdsfsd";
