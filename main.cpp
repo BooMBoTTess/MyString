@@ -2,44 +2,54 @@
 //github test
 
 int main() {
-	const char* fck = "dsafdsfsd";
+	const char* fck = "First string";
 	string a(fck);
-	//a.print();
+	a.print();
 
-	string b("dsad");
-	//b = "dshi";
-	//b.print();
-
-	string c = "lupikupipa";
-	//c.print();
-
-	/*std::cout << b << std::endl;
-	string copied = b;
-	copied.print();
-	b = "iukyyikhj";
+	string b("Second string");
 	b.print();
-	copied.print();*/
+	b = "dshi";
+	b.print();
+	b = a + ' ' + b + " " + a;
+	b.print();
+	a.print();
+	b = a;
+	a = "New first string";
+	a.print();
+	b.print();
 
-	//std::cout << a << b << c << std::endl;
+	std::cout << a << ' ' << b << std::endl;
+	string c = "3 strings in one";
+	std::cout << a << b << ' ' << c << std::endl;
+
 	string ch('s');
+	ch.print();
+	a = a + ch;
 
-	int errfds = 321;
-	//std::cout << ch;
+	string intstring = "321";
+	int bulichka = stoi(intstring);
+	/*try {
+		std::cout << intstring + 124;
+	}
+	catch (std::invalid_argument) {
+		std::cerr << "pie";
+	}*/
+	bulichka = bulichka + 300;
+	std::cout << bulichka << std::endl; //ÓÌÈÐÀËÎ ÊÎÃÄÀ Â êëàññå áûëî const char* str 
 
-	//c = c + '5';
-	//std::cout << c;
+	string cuts = cut(b, 2, 5);
+	std::cout << cuts << std::endl;
 
-	string cuts = cut(c, 3, 8);
-	//std::cout << cuts;
+	b = b + '5';
+	std::cout << b << "_____________________________________" << std::endl;
 
+	string object = "dsa";
+	a = object + a + "sdafghjkl;lythgdesfsde" + cut(b, 1, 6); //+ ñ char* íå ðàáîòåò
+	std::cout << a;
 
-	//string ss = cut(c, 2, 5);
-	//std::cout << ss;
-
-	/*const char* f;
-	const char g[3] = { 'h','g', '\0'};
-	f = &g[0];
-	std::cout << f;*/
+	string inp;
+	std::cin >> inp;
+	std::cout << inp;
 
 	return 0;
 }

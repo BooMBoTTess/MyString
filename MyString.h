@@ -34,14 +34,13 @@ public:
 	friend string operator+ (string s1, char s2);
 	const char& operator[] (const int index) {
 		const char c = str[index];
-
 		return c;
 	}
 
 
 	//function; 
 	friend int stoi(string& s);
-	friend string cut(string& s, int& begin, int& end);
+	friend string cut(string& s, int& begin, int& end); // îáðàáîòàòü end > lenght;
 
 	//output
 	void print(bool endl = true) {
@@ -60,7 +59,7 @@ public:
 private:
 	int lenght;
 
-	const char* str;
+	const char* str = new char;
 
 	void constructor(const char* s) {
 		lenght = strlen(s);
@@ -92,15 +91,24 @@ string operator+ (string s1, char s2) {
 	strcpy(c, s1.str);
 	strcat(c, boof);
 	string s = c;
+	c = 0;
 	return s;
 }
+
+string operator+ (string s1, int s2) {
+	throw std::invalid_argument("can't add str and int");
+	return s1;
+}
+
 std::ostream& operator<< (std::ostream& os, const string& s) {
 	os << s.str;
 	return os;
 }
-std::istream& operator>> (std::istream& is, const string& s) {
-	char c;
-	is >> s.str;
+std::istream& operator>> (std::istream& is,  string& s) { // ÍÅÐÀÁÎÒÀÅÒ
+	char* chars = new char; // îí îñòàåòñÿ((
+	is >> chars;
+	s = chars;
+	
 	return is;
 }
 int stoi(string& s) {
