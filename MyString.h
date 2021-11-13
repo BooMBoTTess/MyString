@@ -1,37 +1,47 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+// TODO: CLASS В .h объявления функций в .cpp
 
-class string {
+class String {
 public:
 
 
 	//construction
-	string() {
-		str = "";
+	String() {
+		str = nullptr;
 		lenght = 0;
 	}
-	string(const char* s) {
+	String(const char* s) {
 		constructor(s);
 	}
-	string(const string& s) {
+	String(const String& s) {
 		constructor(s.str);
 	}
-	string(const char& s) { // УМЕР 
-		const char c[2] = { s, '\0' };
-		const char* bukva = { c };
-		str = bukva;
-		lenght = 1;
+
+	String(char s) { // УМЕР 'd'
+		char c[2] = { s, '\0' };
+		constructor(c);
 	}
 
 	//operators 
 	void operator= (const char* s) {
+		if (str) {
+			delete[] str;
+		}
 		constructor(s);
 	}
 
-	friend std::ostream& operator<< (std::ostream& os, const string& s);
-	friend std::istream& operator>> (std::istream& is, const string& s);
-	friend string operator+ (string s1, string s2); // str + char; char + str ну или не надо
-	friend string operator+ (string s1, char s2);
+	void operator= (const String& s) {
+		if (str) {
+			delete[] str;
+		}
+		constructor(s.str);
+	}
+
+	friend std::ostream& operator<< (std::ostream& os, const String& s);
+	friend std::istream& operator>> (std::istream& is, const String& s);
+	friend String operator+ (String s1, String s2); // str + char; char + str ну или не надо 
+	friend String operator+ (String s1, char s2);
 	const char& operator[] (const int index) {
 		const char c = str[index];
 		return c;
@@ -39,8 +49,8 @@ public:
 
 
 	//function; 
-	friend int stoi(string& s);
-	friend string cut(string& s, int& begin, int& end); // обработать end > lenght;
+	friend int stoi(String& s);
+	friend String cut(String& s, int& begin, int& end); // обработать end > lenght;
 
 	//output
 	void print(bool endl = true) {
@@ -58,60 +68,59 @@ public:
 
 private:
 	int lenght;
-
-	const char* str = new char;
+	
+	 char* str = nullptr;
 
 	void constructor(const char* s) {
 		lenght = strlen(s);
-		str = s;
+		str = new char[lenght+1];
+		str[lenght] = '\0';
+		for (int i = 0; i < lenght; ++i) {
+			str[i] = s[i];
+		}
 	}
 };
 
-string cut(string& s, int begin, int end) {
+String cut(String& s, int begin, int end) {
 	if (begin > end) {
 		throw std::invalid_argument("Begin value should be less than end");
 	}
-	string ss = "";
+	String ss = "";
 	for (int i = begin; i < end; i++) {
 		char f = s[i];
 		ss = ss + f;
 	}
 	return ss;
 }
-string operator+ (string s1, string s2) {
+String operator+ (String s1, String s2) {
 	char* c = new char[s1.lenght + s2.lenght];
 	strcpy(c, s1.str);
 	strcat(c, s2.str);
-	string s = c;
+	String s = c;
 	return s;
 }
-string operator+ (string s1, char s2) {
+String operator+ (String s1, char s2) {
 	char* c = new char[s1.lenght + 1];
 	char boof[2] = { s2, '\0' };
 	strcpy(c, s1.str);
 	strcat(c, boof);
-	string s = c;
+	String s = c;
 	c = 0;
 	return s;
 }
 
-string operator+ (string s1, int s2) {
-	throw std::invalid_argument("can't add str and int");
-	return s1;
-}
-
-std::ostream& operator<< (std::ostream& os, const string& s) { 
+std::ostream& operator<< (std::ostream& os, const String& s) { 
 	os << s.str;
 	return os;
 }
-std::istream& operator>> (std::istream& is,  string& s) { // TODO: DELETE CHARS
-	char* chars = new char; // он остается((
+std::istream& operator>> (std::istream& is,  String& s) { // TODO: PEredelat
+	char* chars = new char[10]; // он остается((
 	is >> chars;
 	s = chars;
-	//delete chars;
+	delete[] chars;
 	return is;
 }
-int stoi(string& s) {
+int stoi(String& s) {
 	int l = s.lenght;
 	//-------------------
 

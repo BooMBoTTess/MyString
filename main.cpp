@@ -3,10 +3,10 @@
 
 int main() {
 	const char* fck = "First string";
-	string a(fck);
+	String a(fck);
 	a.print();
 
-	string b("Second string");
+	String b("Second string");
 	b.print();
 	b.print();
 	b = "dshi";
@@ -20,37 +20,41 @@ int main() {
 	b.print();
 
 	std::cout << a << ' ' << b << std::endl;
-	string c = "3 strings in one";
+	String c = "3 strings in one";
 	std::cout << a << b << ' ' << c << std::endl;
 
-	string ch('s');
+	String ch('j');
 	a = a + ch;
 	std::cout << ch; // ch умирает
-	a = a + ch; // 2 раза включается конструктор, и почему 
+	a = a + ch;
 	std::cout << a << " TEst this" << std::endl;
-	string intstring = "321";
+
+
+	String intstring = "3254641";
 	int bulichka = stoi(intstring);
-	/*try {
-		std::cout << intstring + 124;
-	}
-	catch (std::invalid_argument) {
-		std::cerr << "pie";
-	}*/
+
+	//try {
+	//	std::cout << intstring + 124; // TODO: Construct (int)
+	//}
+	//catch (std::invalid_argument) {
+	//	std::cerr << "pie";
+	//}
+
 	bulichka = bulichka + 300;
 	std::cout << bulichka << std::endl; //УМИРАЛО КОГДА В классе было const char* str 
 
-	string cuts = cut(b, 2, 5);
+	String cuts = cut(b, 2, 5);
 	a + b;
 	std::cout << cuts << std::endl;
 
 	b = b + '5';
 	std::cout << b << "_____________________________________" << std::endl;
 
-	string object = "dsa";
+	String object = "dsa";
 	a = object + a + cut(b, 1, 6); //+ с char* не работет
 	std::cout << a;
 
-	string inp;
+	String inp;
 	std::cin >> inp;
 	std::cout << inp;
 
