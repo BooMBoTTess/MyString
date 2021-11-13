@@ -100,11 +100,11 @@ string operator+ (string s1, int s2) {
 	return s1;
 }
 
-std::ostream& operator<< (std::ostream& os, const string& s) {
+std::ostream& operator<< (std::ostream& os, const string& s) { 
 	os << s.str;
 	return os;
 }
-std::istream& operator>> (std::istream& is,  string& s) { // ÍÅĞÀÁÎÒÀÅÒ
+std::istream& operator>> (std::istream& is,  string& s) { // TODO: DELETE CHARS
 	char* chars = new char; // îí îñòàåòñÿ((
 	is >> chars;
 	s = chars;
