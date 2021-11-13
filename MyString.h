@@ -108,7 +108,7 @@ std::istream& operator>> (std::istream& is,  string& s) { // ÍÅĞÀÁÎÒÀÅÒ
 	char* chars = new char; // îí îñòàåòñÿ((
 	is >> chars;
 	s = chars;
-	
+	//delete chars;
 	return is;
 }
 int stoi(string& s) {
