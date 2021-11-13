@@ -1,5 +1,4 @@
 #include "MyString.h"
-//github test
 
 int main() {
 	const char* fck = "First string";
@@ -33,12 +32,12 @@ int main() {
 	String intstring = "3254641";
 	int bulichka = stoi(intstring);
 
-	//try {
-	//	std::cout << intstring + 124; // TODO: Construct (int)
-	//}
-	//catch (std::invalid_argument) {
-	//	std::cerr << "pie";
-	//}
+	////try {
+	////	std::cout << intstring + 124; // TODO: Construct (int)
+	////}
+	////catch (std::invalid_argument) {
+	////	std::cerr << "pie";
+	////}
 
 	bulichka = bulichka + 300;
 	std::cout << bulichka << std::endl; //ÓÌÈÐÀËÎ ÊÎÃÄÀ Â êëàññå áûëî const char* str 
@@ -54,9 +53,7 @@ int main() {
 	a = object + a + cut(b, 1, 6); //+ ñ char* íå ðàáîòåò
 	std::cout << a;
 
-	String inp;
-	std::cin >> inp;
-	std::cout << inp;
+	
 
 	return 0;
 }
