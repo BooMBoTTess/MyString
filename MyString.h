@@ -16,9 +16,9 @@ public:
 	string(const string& s) {
 		constructor(s.str);
 	}
-	string(const char& s) {
+	string(const char& s) { // слеп 
 		const char c[2] = { s, '\0' };
-		const char* bukva = &c[0];
+		const char* bukva = { c };
 		str = bukva;
 		lenght = 1;
 	}

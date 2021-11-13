@@ -8,6 +8,7 @@ int main() {
 
 	string b("Second string");
 	b.print();
+	b.print();
 	b = "dshi";
 	b.print();
 	b = a + ' ' + b + " " + a;
@@ -23,9 +24,10 @@ int main() {
 	std::cout << a << b << ' ' << c << std::endl;
 
 	string ch('s');
-	ch.print();
 	a = a + ch;
-
+	std::cout << ch; // ch умирает
+	a = a + ch; // 2 раза включается конструктор, и почему 
+	std::cout << a << " TEst this" << std::endl;
 	string intstring = "321";
 	int bulichka = stoi(intstring);
 	/*try {
@@ -38,13 +40,14 @@ int main() {
 	std::cout << bulichka << std::endl; //УМИРАЛО КОГДА В классе было const char* str 
 
 	string cuts = cut(b, 2, 5);
+	a + b;
 	std::cout << cuts << std::endl;
 
 	b = b + '5';
 	std::cout << b << "_____________________________________" << std::endl;
 
 	string object = "dsa";
-	a = object + a + "sdafghjkl;lythgdesfsde" + cut(b, 1, 6); //+ с char* не работет
+	a = object + a + cut(b, 1, 6); //+ с char* не работет
 	std::cout << a;
 
 	string inp;
