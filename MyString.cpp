@@ -36,24 +36,50 @@ char& String::operator[] (const int index) {
 	char& c = *(str + index);
 	return c;
 }
-void resize() {
+void resize(char*& str, int n) {
+	int oldSize = strlen(str);
+	int newSize = oldSize + n;
+	char* copyStr = new char[newSize + 1];
 
+	for (int i = 0; i < oldSize; ++i)
+	{
+		copyStr[i] = str[i];
+	}
+
+	copyStr[newSize] = '\0';
+
+	delete[] str;
+	str = copyStr;
 }
 
-std::istream& operator>> (std::istream& is, String& s) { //TODO: Через arrC изменить s.str, но оно константное, нужно сделать неконстантное
-	// Можно Заодно сделать изменение элементов строки поэлементно, чтоб можно было изменить s.str
-	// Или же научится изменять  const char* 
-	char* arrC = new char[5];
+std::istream& operator>> (std::istream& is, String& s) { 
+	const int n = 2;
+	char* boof = new char[n+1];
+
+	boof[n] = '\0';
 	int i=0;
+
 	for (char input = is.get();
          input != '\n';
          input = is.get(), ++i)
     {   
-		arrC[i] = input;
+		if (boof[i]) {
+			boof[i] = input;
+		}
+		else {
+			resize(boof, n);
+			boof[i] = input;
+		}
 	}
+	boof[i] = '\0';
 
-	s = arrC;
-	delete[] arrC;
+	s.str = new char[i+1];
+	for (int k = 0; k < i; k++) {
+		s.str[k] = boof[k];
+	}
+	s.str[i] = '\0';
+	s.lenght = i;
+	delete[] boof;
 	return is;
 }
 std::ostream& operator<< (std::ostream& os, const String& s) {
@@ -108,6 +134,7 @@ String operator+ (String s1, char s2) {
 	c = 0;
 	return s;
 }
+
 void String::constructor(const char* s) {
 	lenght = strlen(s);
 	str = new char[lenght + 1];
