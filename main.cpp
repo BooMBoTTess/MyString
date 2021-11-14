@@ -57,9 +57,10 @@ int main() {
 	object[1] = 'e';
 	std::cout << object[1];
 	std::cout << object;
-	//String obj;
-	//std::cin >> obj;
-	//std::cout << obj;
+
+	String obj;
+	std::cin >> obj;
+	std::cout << obj;
+
 	return 0;
 }
-//Отладка > Окна > Контрольные значения > Контрольные значения 1 или
