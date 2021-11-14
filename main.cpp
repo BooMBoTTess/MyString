@@ -33,12 +33,9 @@ int main() {
 	String intstring = "3254641";
 	int bulichka = stoi(intstring);
 
-	////try {
-	////	std::cout << intstring + 124; // TODO: Construct (int)
-	////}
-	////catch (std::invalid_argument) {
-	////	std::cerr << "pie";
-	////}
+
+	std::cout << intstring + 124;
+
 
 	bulichka = bulichka + 300;
 	std::cout << bulichka << std::endl; //ÓÌÈÐÀËÎ ÊÎÃÄÀ Â êëàññå áûëî const char* str 
@@ -60,7 +57,9 @@ int main() {
 
 	String obj;
 	std::cin >> obj;
-	std::cout << obj;
+	std::cout << obj << std::endl;
 
+	String integer = 1324;
+	std::cout << integer;
 	return 0;
 }

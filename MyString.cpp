@@ -13,10 +13,30 @@ String::String(const char* s) {
 String::String(const String& s) {
 	constructor(s.str);
 }
-
 String::String(char s) {
 	char c[2] = { s, '\0' };
 	constructor(c);
+}
+String::String(int s) {
+	int s_size = 0;
+	if (s == 0){
+		s_size = 1;
+	}
+	else {
+		for (int boof = s; boof != 0; boof /= 10, ++s_size);
+	}
+
+	int s_letter;
+	str = new char[s_size + 1];
+
+	for (int i = 0; i < s_size; ++i)
+	{
+		s_letter = s % 10;
+		s = s / 10;
+		str[s_size - 1 - i] = s_letter + '0';
+	}
+	str[s_size] = '\0';
+	lenght = s_size;
 }
 
 void String::operator= (char* s) {
@@ -36,6 +56,7 @@ char& String::operator[] (const int index) {
 	char& c = *(str + index);
 	return c;
 }
+
 void resize(char*& str, int n) {
 	int oldSize = strlen(str);
 	int newSize = oldSize + n;
@@ -51,7 +72,6 @@ void resize(char*& str, int n) {
 	delete[] str;
 	str = copyStr;
 }
-
 std::istream& operator>> (std::istream& is, String& s) { 
 	const int n = 2;
 	char* boof = new char[n+1];
@@ -118,20 +138,25 @@ String cut(String& s, int begin, int end) {
 	}
 	return ss;
 }
-String operator+ (String s1, String s2) {
+String operator+ (const String s1, const String s2) {
 	char* c = new char[s1.lenght + s2.lenght];
 	strcpy(c, s1.str);
 	strcat(c, s2.str);
 	String s = c;
 	return s;
 }
-String operator+ (String s1, char s2) {
+String operator+ (const String s1, const char s2) {
 	char* c = new char[s1.lenght + 1];
 	char boof[2] = { s2, '\0' };
 	strcpy(c, s1.str);
 	strcat(c, boof);
 	String s = c;
 	c = 0;
+	return s;
+}
+String operator+ (const String s1, const int s2) {
+	String s = s2;
+	s = s1 + s;
 	return s;
 }
 

@@ -10,6 +10,7 @@ public:
 	String(const char* s);
 	String(const String& s);
 	String(char s);
+	String(int s);
 
 	//operators 
 	void operator= (char* s); 
@@ -17,8 +18,9 @@ public:
 
 	friend std::ostream& operator<< (std::ostream& os, const String& s);
 	friend std::istream& operator>> (std::istream& is, String& s);
-	friend String operator+ (String s1, String s2); // str + char; char + str ну или не надо 
-	friend String operator+ (String s1, char s2);
+	friend String operator+ (const String s1, const String s2); // str + char; char + str ну или не надо 
+	friend String operator+ (const String s1, const char s2);
+	friend String operator+ (const String s1, const int s2);
 	char& operator[] (const int index);
 
 	//function; 
