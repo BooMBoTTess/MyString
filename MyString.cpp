@@ -1,3 +1,6 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <iostream>
 #include "MyString.h"
 
 String::String() {
@@ -16,7 +19,7 @@ String::String(char s) {
 	constructor(c);
 }
 
-void String::operator= (const char* s) {
+void String::operator= (char* s) {
 	if (str) {
 		delete[] str;
 	}
@@ -29,10 +32,24 @@ void String::operator= (const String& s) {
 	}
 	constructor(s.str);
 }
-const char& String::operator[] (const int index) {
-	const char c = str[index];
+char& String::operator[] (const int index) {
+	char& c = *(str + index);
 	return c;
 }
+std::istream& operator>> (std::istream& is, String& s) { //TODO: Через arrC изменить s.str, но оно константное, нужно сделать неконстантное
+	// Можно Заодно сделать изменение элементов строки поэлементно, чтоб можно было изменить s.str
+	// Или же научится изменять  const char* 
+	char* arrC= new char[5];
+	is >> arrC;
+	
+	return is;
+}
+std::ostream& operator<< (std::ostream& os, const String& s) {
+	os << s.str;
+	
+	return os;
+}
+
 int stoi(String& s) {
 	int l = s.lenght;
 	//-------------------
@@ -78,17 +95,6 @@ String operator+ (String s1, char s2) {
 	String s = c;
 	c = 0;
 	return s;
-}
-std::ostream& operator<< (std::ostream& os, const String& s) {
-	os << s.str;
-	return os;
-}
-std::istream& operator>> (std::istream& is, String& s) { //TODO: PEredelat
-	char* chars = new char[10]; // он остается((
-	is >> chars;
-	s = chars;
-	delete[] chars;
-	return is;
 }
 void String::constructor(const char* s) {
 	lenght = strlen(s);

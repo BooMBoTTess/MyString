@@ -1,8 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 
-//TODO: CLASS В .h объявления функций в .cpp
-
 class String {
 public:
 
@@ -14,14 +12,14 @@ public:
 	String(char s);
 
 	//operators 
-	void operator= (const char* s); 
+	void operator= (char* s); 
 	void operator= (const String& s);
 
 	friend std::ostream& operator<< (std::ostream& os, const String& s);
 	friend std::istream& operator>> (std::istream& is, const String& s);
 	friend String operator+ (String s1, String s2); // str + char; char + str ну или не надо 
 	friend String operator+ (String s1, char s2);
-	const char& operator[] (const int index);
+	char& operator[] (const int index);
 
 	//function; 
 	friend int stoi(String& s);
@@ -43,9 +41,7 @@ public:
 
 private:
 	int lenght;
-	
 	char* str = nullptr;
+
 	void constructor(const char* s);
 };
-
-

@@ -1,4 +1,5 @@
 #include "MyString.h"
+#include <iostream>
 
 int main() {
 	const char* fck = "First string";
@@ -51,9 +52,14 @@ int main() {
 
 	String object = "dsa";
 	a = object + a + cut(b, 1, 6); //+ с char* не работет
-	std::cout << a;
-
-	
-
+	std::cout << a << std::endl;	
+	std::cout << object[1];
+	object[1] = 'e';
+	std::cout << object[1];
+	std::cout << object;
+	//String obj;
+	//std::cin >> obj;
+	//std::cout << obj;
 	return 0;
 }
+//Отладка > Окна > Контрольные значения > Контрольные значения 1 или
