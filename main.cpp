@@ -55,11 +55,20 @@ int main() {
 	std::cout << object[1];
 	std::cout << object;
 
-	String obj;
-	std::cin >> obj;
+	String obj = "hesd";
+	//std::cin >> obj;
 	std::cout << obj << std::endl;
 
 	String integer = 1324;
-	std::cout << integer;
+	std::cout << integer << std::endl;
+
+
+	String  first[5] = { "abcd", "abc", "", "BIG LETTER", "Boobtry" };
+	String  second[5] = { "abcdefg", "aac", "wsdw", "big letter", "bOOber" };
+
+	for (int i = 0; i < 5; ++i)
+	{
+		std::cout << (first[i] < second[i]) << ' ' << first[i]  << '<' << second[i] << std::endl;
+	}
 	return 0;
 }

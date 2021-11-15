@@ -21,6 +21,11 @@ public:
 	friend String operator+ (const String s1, const String s2); // str + char; char + str ну или не надо 
 	friend String operator+ (const String s1, const char s2);
 	friend String operator+ (const String s1, const int s2);
+
+	friend bool operator> (const String& lhs, const String& rhs);
+	friend bool operator< (const String& lhs, const String& rhs);
+	friend bool operator== (const String& lhs, const String& rhs);
+
 	char& operator[] (const int index);
 
 	//function; 
@@ -46,4 +51,5 @@ private:
 	char* str = nullptr;
 
 	void constructor(const char* s);
+	friend int compare(const String& lhs, const String& rhs);
 };

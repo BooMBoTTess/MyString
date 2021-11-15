@@ -160,6 +160,73 @@ String operator+ (const String s1, const int s2) {
 	return s;
 }
 
+int compare(const String& lhs, const String& rhs) { // 0 - равно, 1 - Больше, 2 - Меньше
+	int lenght; // Минимальный размер, чтоб не выйти за предел массива.
+	if (lhs.lenght > rhs.lenght)
+	{
+		lenght = rhs.lenght;
+	}
+	else {
+		lenght = lhs.lenght;
+	}
+
+	if (lenght == 0){
+		throw std::invalid_argument("Strings must be not 0 lenght");
+	}
+	for (int i = 0; i < lenght; ++i)
+	{
+		if (lhs.str[i] > rhs.str[i]) {
+			return 1;
+		}
+		else if (lhs.str[i] < rhs.str[i]) {
+			return 2;
+		}
+	}
+	return 0;
+}
+bool operator> (const String& lhs, const String& rhs) {
+	int switch_on = compare(lhs, rhs);
+	switch (switch_on)
+	{
+	case 0:
+		return false;
+	case 1:
+		return true;
+	case 2:
+		return false;
+	default:
+		std::cerr << "smth wrong with compare";
+	}
+}
+bool operator< (const String& lhs, const String& rhs) {
+	int switch_on = compare(lhs, rhs);
+	switch (switch_on)
+	{
+	case 0:
+		return false;
+	case 1:
+		return false;
+	case 2:
+		return true;
+	default:
+		std::cerr << "smth wrong with compare";
+	}
+}
+bool operator== (const String& lhs, const String& rhs) {
+	int switch_on = compare(lhs, rhs);
+	switch (switch_on)
+	{
+	case 0:
+		return true;
+	case 1:
+		return false;
+	case 2:
+		return false;
+	default:
+		std::cerr << "smth wrong with compare";
+	}
+}
+
 void String::constructor(const char* s) {
 	lenght = strlen(s);
 	str = new char[lenght + 1];
