@@ -18,6 +18,8 @@ public:
 
 	friend std::ostream& operator<< (std::ostream& os, const String& s);
 	friend std::istream& operator>> (std::istream& is, String& s);
+	
+
 	friend String operator+ (const String s1, const String s2); // str + char; char + str ну или не надо 
 	friend String operator+ (const String s1, const char s2);
 	friend String operator+ (const String s1, const int s2);
@@ -45,6 +47,7 @@ public:
 	}
 
 	//destruction
+	~String();
 
 private:
 	int lenght;

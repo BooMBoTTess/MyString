@@ -131,27 +131,35 @@ String cut(String& s, int begin, int end) {
 	if (begin > end) {
 		throw std::invalid_argument("Begin value should be less than end");
 	}
-	String ss = "";
-	for (int i = begin; i < end; i++) {
-		char f = s[i];
-		ss = ss + f;
+	size_t size = end - begin;
+	char* c = new char[size + 1];
+
+	for (size_t i = begin; i < end; ++i) {
+		c[i-begin] = s[i];
 	}
+	c[size] = '\0';
+	String ss(c);
+
+	delete[] c;
 	return ss;
 }
+
+
 String operator+ (const String s1, const String s2) {
-	char* c = new char[s1.lenght + s2.lenght];
+	char* c = new char[s1.lenght + s2.lenght + 1];
 	strcpy(c, s1.str);
 	strcat(c, s2.str);
 	String s = c;
+	delete[] c;
 	return s;
 }
 String operator+ (const String s1, const char s2) {
-	char* c = new char[s1.lenght + 1];
+	char* c = new char[s1.lenght + 2];
 	char boof[2] = { s2, '\0' };
 	strcpy(c, s1.str);
 	strcat(c, boof);
 	String s = c;
-	c = 0;
+	delete[] c;
 	return s;
 }
 String operator+ (const String s1, const int s2) {
@@ -234,4 +242,8 @@ void String::constructor(const char* s) {
 	for (int i = 0; i < lenght; ++i) {
 		str[i] = s[i];
 	}
+}
+
+String::~String() {
+	delete[] str;
 }

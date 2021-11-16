@@ -1,8 +1,12 @@
 #include "MyString.h"
 #include <iostream>
-
+#include <algorithm>
+#include <vector>
+void testDelete() {
+	String testDeleteString = "hellokitty";
+}
 int main() {
-	const char* fck = "First string";
+	const char* fck = "First String";
 	String a(fck);
 	a.print();
 
@@ -63,12 +67,18 @@ int main() {
 	std::cout << integer << std::endl;
 
 
-	String  first[5] = { "abcd", "abc", "", "BIG LETTER", "Boobtry" };
-	String  second[5] = { "abcdefg", "aac", "wsdw", "big letter", "bOOber" };
+	String  arr[18] = { "abcd", "abc", "zendy", "BIG LETTER", "Boobtry", "dsadsad", "hello kitty", "My string", "puple"
+	, "hello kitty", "What are you doin"};
 
-	for (int i = 0; i < 5; ++i)
+	/*std::vector<String> vec(arr)
+	std::sort(vec.begin(), vec.end())
+	*/
+
+	/*for (int i = 0; i < 5; ++i)
 	{
-		std::cout << (first[i] < second[i]) << ' ' << first[i]  << '<' << second[i] << std::endl;
-	}
+		std::cout << first[i] << ' ';
+	}*/
+	testDelete();
+
 	return 0;
 }
