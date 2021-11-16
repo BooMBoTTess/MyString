@@ -128,8 +128,8 @@ int stoi(String& s) {
 	return integer;
 }
 String cut(String& s, int begin, int end) {
-	if (begin > end) {
-		throw std::invalid_argument("Begin value should be less than end");
+	if ((begin > end) || (end > s.lenght)) {
+		throw std::invalid_argument("Stupid guy");
 	}
 	size_t size = end - begin;
 	char* c = new char[size + 1];
