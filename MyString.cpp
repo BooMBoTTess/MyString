@@ -1,6 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include <iostream>
 #include "MyString.h"
 
 String::String() {
@@ -178,9 +177,8 @@ int compare(const String& lhs, const String& rhs) { // 0 - равно, 1 - Больше, 2 
 		lenght = lhs.lenght;
 	}
 
-	if (lenght == 0){
-		throw std::invalid_argument("Strings must be not 0 lenght");
-	}
+	
+
 	for (int i = 0; i < lenght; ++i)
 	{
 		if (lhs.str[i] > rhs.str[i]) {

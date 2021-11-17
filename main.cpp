@@ -1,11 +1,25 @@
 #include "MyString.h"
 #include <iostream>
-#include <algorithm>
-#include <vector>
-void testDelete() {
-	String testDeleteString = "hellokitty";
+#include <cassert>
+
+void TestConstructor() {
+	String a;
+	assert(a == "" && a.len() == 0);
+	a = 'h';
+	assert(a == "h" && a.len() == 1);
+	String b("Hello");
+	assert((b == "Hello") );
+
+	std::cout << "TestConstructor OK";
+
 }
+
+
 int main() {
+	TestConstructor();
+
+	return 0;
+
 	const char* fck = "First String";
 	String a(fck);
 	a.print();
@@ -78,7 +92,6 @@ int main() {
 	{
 		std::cout << first[i] << ' ';
 	}*/
-	testDelete();
 
 	return 0;
 }
